@@ -29,13 +29,13 @@ public class ChargeCreditCard {
         // Populate the payment data
         PaymentType paymentType = new PaymentType();
         CreditCardType creditCard = new CreditCardType();
-        creditCard.setCardNumber("4242424242424242");
-        creditCard.setExpirationDate("0835");
+        creditCard.setCardNumber("5424000000000015");
+        creditCard.setExpirationDate("1225");
         paymentType.setCreditCard(creditCard);
 
         // Set email address (optional)
         CustomerDataType customer = new CustomerDataType();
-        customer.setEmail("test@test.test");
+        customer.setEmail("anqi.angeline.wang@gmail.com");
 
         // Create the payment transaction object
         TransactionRequestType txnRequest = new TransactionRequestType();
@@ -56,7 +56,10 @@ public class ChargeCreditCard {
         // Get the response
         CreateTransactionResponse response = new CreateTransactionResponse();
         response = controller.getApiResponse();
-        
+        System.out.println("jjjjjjj");
+
+        System.out.println(response.getTransactionResponse());
+
         // Parse the response to determine results
         if (response!=null) {
             // If API Response is OK, go ahead and check the transaction response

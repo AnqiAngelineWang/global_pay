@@ -3,6 +3,7 @@ package net.authorize.sample.PayPalExpressCheckout;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import generateQRcode.QRCodeGenerator;
 import net.authorize.Environment;
 import net.authorize.api.contract.v1.ANetApiResponse;
 import net.authorize.api.contract.v1.CreateTransactionRequest;
@@ -53,17 +54,33 @@ public class AuthorizationAndCapture {
 		controller.execute();
 
 		CreateTransactionResponse response = controller.getApiResponse();
-		
+
         if (response!=null) {
         	// If API Response is ok, go ahead and check the transaction response
         	if (response.getMessages().getResultCode() == MessageTypeEnum.OK) {
-        		TransactionResponse result = response.getTransactionResponse();
+
+				for (int i = 0; i <response.getMessages().getMessage().size() ; i++) {
+					System.out.println(response.getMessages().getMessage().get(i));
+				}
+
+				TransactionResponse result = response.getTransactionResponse();
         		if (result.getMessages() != null) {
+					System.out.println(result.getMessages());
+					System.out.println("-----1-----");
+					System.out.println(result.getMessages().getMessage());   ///  list
+					System.out.println("------2----");
+					System.out.println(result.getMessages().getMessage().get(0));
+
+
+
         			System.out.println("Successfully created transaction with Transaction ID: " + result.getTransId());
         			System.out.println("Response Code: " + result.getResponseCode());
         			System.out.println("Message Code: " + result.getMessages().getMessage().get(0).getCode());
         			System.out.println("Description: " + result.getMessages().getMessage().get(0).getDescription());
         			System.out.println("Secure Acceptance URL : " + result.getSecureAcceptance().getSecureAcceptanceUrl());
+
+					String acceptanceURL = result.getSecureAcceptance().getSecureAcceptanceUrl();
+					new QRCodeGenerator().qrCodeGenerator(acceptanceURL);
         		}
         		else {
         			System.out.println("Failed Transaction.");
@@ -88,7 +105,7 @@ public class AuthorizationAndCapture {
         else {
         	System.out.println("Null Response.");
         }
-		
+
 		return response;
 	}
 }

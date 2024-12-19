@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import generateQRcode.QRCodeGenerator;
+import net.authorize.api.contract.v1.ANetApiResponse;
+import net.authorize.api.contract.v1.CreateTransactionResponse;
+import net.authorize.api.contract.v1.TransactionResponse;
 import net.authorize.sample.VisaCheckout.*;
 import net.authorize.util.Constants;
 import net.authorize.sample.PaymentTransactions.*;
@@ -161,193 +165,193 @@ public class SampleCode {
 //		 System.setProperty(Constants.HTTPS_PROXY_PASSWORD, "examplePassword");
 
 		switch (methodName) {
-		case "DecryptVisaSrcData":
-			DecryptVisaSrcData.run(apiLoginId, transactionKey);
-			break;
-		case "CreateVisaSrcTransaction":
-			CreateVisaSrcTransaction.run(apiLoginId, transactionKey);
-			break;
-		case "ChargeCreditCard":
-			ChargeCreditCard.run(apiLoginId, transactionKey, amount);
-			break;
-		case "VoidTransaction":
-			VoidTransaction.run(apiLoginId, transactionKey, transactionId);
-			break;
-		case "AuthorizeCreditCard":
-			AuthorizeCreditCard.run(apiLoginId, transactionKey, amount);
-			break;
-		case "RefundTransaction":
-			RefundTransaction.run(apiLoginId, transactionKey, amount, transactionId);
-			break;
-		case "CreateCustomerProfileFromTransaction":
-			CreateCustomerProfileFromTransaction.run(apiLoginId, transactionKey, amount, emailId);
-			break;
-		case "CaptureFundsAuthorizedThroughAnotherChannel":
-			CaptureFundsAuthorizedThroughAnotherChannel.run(apiLoginId, transactionKey, amount);
-			break;
-		case "CapturePreviouslyAuthorizedAmount":
-			CapturePreviouslyAuthorizedAmount.run(apiLoginId, transactionKey, transactionId);
-			break;
-		case "DebitBankAccount":
-			DebitBankAccount.run(apiLoginId, transactionKey, amount);
-			break;
-		case "CreditBankAccount":
-			CreditBankAccount.run(apiLoginId, transactionKey, transactionId, amount);
-			break;
-		case "ChargeTokenizedCreditCard":
-			ChargeTokenizedCreditCard.run(apiLoginId, transactionKey, amount);
-			break;
-		case "CreateAnApplePayTransaction":
-			CreateAnApplePayTransaction.run(apiLoginId, transactionKey);
-			break;
-		case "CreateAnAndroidPayTransaction":
-			CreateAnAndroidPayTransaction.run(apiLoginId, transactionKey);
-			break;
-		case "CreateAnAcceptTransaction":
-			CreateAnAcceptTransaction.run(apiLoginId, transactionKey);
-			break;
-		case "CreateGooglePayTransaction":
-			CreateGooglePayTransaction.run(apiLoginId, transactionKey, amount);
-			break;
-		case "ChargeCustomerProfile":
-			ChargeCustomerProfile.run(apiLoginId, transactionKey, customerProfileId, customerPaymentProfileId, amount);
-			break;
-		case "ChargeCustomerProfilesMT":
-			ChargeCustomerProfilesMT.run();
-			break;
-		case "CreateSubscription":
-			CreateSubscription.run(apiLoginId, transactionKey, (short) 12, amount);
-			break;
-		case "CreateSubscriptionFromCustomerProfile":
-			CreateSubscriptionFromCustomerProfile.run(apiLoginId, transactionKey, (short) 12, amount, customerProfileId,
-					customerPaymentProfileId, customerAddressId);
-			break;
-		case "GetSubscription":
-			GetSubscription.run(apiLoginId, transactionKey, subscriptionId);
-			break;
-		case "GetSubscriptionStatus":
-			GetSubscriptionStatus.run(apiLoginId, transactionKey, subscriptionId);
-			break;
-		case "CancelSubscription":
-			CancelSubscription.run(apiLoginId, transactionKey, subscriptionId);
-			break;
-		case "UpdateSubscription":
-			UpdateSubscription.run(apiLoginId, transactionKey, subscriptionId);
-			break;
-		case "GetListOfSubscriptions":
-			GetListOfSubscriptions.run(apiLoginId, transactionKey);
-			break;
-		case "GetBatchStatistics":
-			GetBatchStatistics.run(apiLoginId, transactionKey);
-			break;
-		case "GetSettledBatchList":
-			GetSettledBatchList.run(apiLoginId, transactionKey);
-			break;
-		case "GetTransactionList":
-			GetTransactionList.run(apiLoginId, transactionKey);
-			break;
-		case "GetUnsettledTransactionList":
-			GetUnsettledTransactionList.run(apiLoginId, transactionKey);
-			break;
-		case "GetTransactionDetails":
-			GetTransactionDetails.run(apiLoginId, transactionKey, transactionId);
-			break;
-		case "CreateCustomerProfile":
-			CreateCustomerProfile.run(apiLoginId, transactionKey, emailId);
-			break;
-		case "CreateCustomerPaymentProfile":
-			CreateCustomerPaymentProfile.run(apiLoginId, transactionKey, customerProfileId);
-			break;
-		case "CreateCustomerShippingAddress":
-			CreateCustomerShippingAddress.run(apiLoginId, transactionKey, customerProfileId);
-			break;
-		case "DeleteCustomerPaymentProfile":
-			DeleteCustomerPaymentProfile.run(apiLoginId, transactionKey, customerProfileId, customerPaymentProfileId);
-			break;
-		case "DeleteCustomerProfile":
-			DeleteCustomerProfile.run(apiLoginId, transactionKey, customerProfileId);
-			break;
-		case "DeleteCustomerShippingAddress":
-			DeleteCustomerShippingAddress.run(apiLoginId, transactionKey, customerProfileId, customerAddressId);
-			break;
-		case "GetCustomerPaymentProfile":
-			GetCustomerPaymentProfile.run(apiLoginId, transactionKey, customerProfileId, customerPaymentProfileId);
-			break;
-		case "GetCustomerPaymentProfileList":
-			GetCustomerPaymentProfileList.run(apiLoginId, transactionKey);
-			break;
-		case "GetCustomerProfile":
-			GetCustomerProfile.run(apiLoginId, transactionKey, customerProfileId);
-			break;
-		case "GetCustomerProfileIds":
-			GetCustomerProfileIds.run(apiLoginId, transactionKey);
-			break;
-		case "GetCustomerProfileTransactionList":
-			customerProfileId = "1811474252";
-			GetCustomerProfileTransactionList.run(apiLoginId, transactionKey, customerProfileId);
-			break;
-		case "GetCustomerShippingAddress":
-			GetCustomerShippingAddress.run(apiLoginId, transactionKey, customerProfileId, customerAddressId);
-			break;
-		case "GetAcceptCustomerProfilePage":
-			GetAcceptCustomerProfilePage.run(apiLoginId, transactionKey, customerProfileId);
-			break;
-		case "UpdateCustomerProfile":
-			UpdateCustomerProfile.run(apiLoginId, transactionKey, customerProfileId);
-			break;
-		case "UpdateCustomerPaymentProfile":
-			UpdateCustomerPaymentProfile.run(apiLoginId, transactionKey, customerProfileId, customerPaymentProfileId);
-			break;
-		case "UpdateCustomerShippingAddress":
-			UpdateCustomerShippingAddress.run(apiLoginId, transactionKey, customerProfileId, customerAddressId);
-			break;
-		case "ValidateCustomerPaymentProfile":
-			ValidateCustomerPaymentProfile.run(apiLoginId, transactionKey, customerProfileId, customerPaymentProfileId);
-			break;
-		case "PayPalAuthorizeCapture":
-			AuthorizationAndCapture.run(apiLoginId, transactionKey, amount);
-			break;
-		case "PayPalVoid":
-			Void.run(apiLoginId, transactionKey, transactionId);
-			break;
-		case "PayPalAuthorizationOnly":
-			AuthorizationOnly.run(apiLoginId, transactionKey, amount);
-			break;
-		case "PayPalAuthorizeCaptureContinued":
-			AuthorizationAndCaptureContinued.run(apiLoginId, transactionKey, transactionId, payerId, amount);
-			break;
-		case "PayPalAuthorizeOnlyContinued":
-			AuthorizationOnlyContinued.run(apiLoginId, transactionKey, transactionId, payerId, amount);
-			break;
-		case "PayPalCredit":
-			Credit.run(apiLoginId, transactionKey, transactionId);
-			break;
-		case "PayPalGetDetails":
-			GetDetails.run(apiLoginId, transactionKey, transactionId);
-		case "PayPalPriorAuthorizationCapture":
-			PriorAuthorizationCapture.run(apiLoginId, transactionKey, transactionId);
-			break;
-		case "UpdateSplitTenderGroup":
-			UpdateSplitTenderGroup.run(apiLoginId, transactionKey);
-			break;
-		case "GetMerchantDetails":
-			GetMerchantDetails.run(apiLoginId, transactionKey);
-			break;
-		case "GetHeldTransactionList":
-			GetHeldTransactionList.run(apiLoginId, transactionKey);
-			break;
-		case "ApproveOrDeclineHeldTransaction":
-			ApproveOrDeclineHeldTransaction.run(apiLoginId, transactionKey, transactionId);
-			break;
-		case "GetAnAcceptPaymentPage":
-			GetAnAcceptPaymentPage.run(apiLoginId, transactionKey, amount);
-			break;
-		case "CreateChasePayTransaction":
-			CreateChasePayTransaction.run(apiLoginId, transactionKey, amount);
-			break;
-		default:
-			ShowUsage();
-			break;
+			case "DecryptVisaSrcData":
+				DecryptVisaSrcData.run(apiLoginId, transactionKey);
+				break;
+			case "CreateVisaSrcTransaction":
+				CreateVisaSrcTransaction.run(apiLoginId, transactionKey);
+				break;
+			case "ChargeCreditCard":
+				ChargeCreditCard.run(apiLoginId, transactionKey, amount);
+				break;
+			case "VoidTransaction":
+				VoidTransaction.run(apiLoginId, transactionKey, transactionId);
+				break;
+			case "AuthorizeCreditCard":
+				AuthorizeCreditCard.run(apiLoginId, transactionKey, amount);
+				break;
+			case "RefundTransaction":
+				RefundTransaction.run(apiLoginId, transactionKey, amount, transactionId);
+				break;
+			case "CreateCustomerProfileFromTransaction":
+				CreateCustomerProfileFromTransaction.run(apiLoginId, transactionKey, amount, emailId);
+				break;
+			case "CaptureFundsAuthorizedThroughAnotherChannel":
+				CaptureFundsAuthorizedThroughAnotherChannel.run(apiLoginId, transactionKey, amount);
+				break;
+			case "CapturePreviouslyAuthorizedAmount":
+				CapturePreviouslyAuthorizedAmount.run(apiLoginId, transactionKey, transactionId);
+				break;
+			case "DebitBankAccount":
+				DebitBankAccount.run(apiLoginId, transactionKey, amount);
+				break;
+			case "CreditBankAccount":
+				CreditBankAccount.run(apiLoginId, transactionKey, transactionId, amount);
+				break;
+			case "ChargeTokenizedCreditCard":
+				ChargeTokenizedCreditCard.run(apiLoginId, transactionKey, amount);
+				break;
+			case "CreateAnApplePayTransaction":
+				CreateAnApplePayTransaction.run(apiLoginId, transactionKey);
+				break;
+			case "CreateAnAndroidPayTransaction":
+				CreateAnAndroidPayTransaction.run(apiLoginId, transactionKey);
+				break;
+			case "CreateAnAcceptTransaction":
+				CreateAnAcceptTransaction.run(apiLoginId, transactionKey);
+				break;
+			case "CreateGooglePayTransaction":
+				CreateGooglePayTransaction.run(apiLoginId, transactionKey, amount);
+				break;
+			case "ChargeCustomerProfile":
+				ChargeCustomerProfile.run(apiLoginId, transactionKey, customerProfileId, customerPaymentProfileId, amount);
+				break;
+			case "ChargeCustomerProfilesMT":
+				ChargeCustomerProfilesMT.run();
+				break;
+			case "CreateSubscription":
+				CreateSubscription.run(apiLoginId, transactionKey, (short) 12, amount);
+				break;
+			case "CreateSubscriptionFromCustomerProfile":
+				CreateSubscriptionFromCustomerProfile.run(apiLoginId, transactionKey, (short) 12, amount, customerProfileId,
+						customerPaymentProfileId, customerAddressId);
+				break;
+			case "GetSubscription":
+				GetSubscription.run(apiLoginId, transactionKey, subscriptionId);
+				break;
+			case "GetSubscriptionStatus":
+				GetSubscriptionStatus.run(apiLoginId, transactionKey, subscriptionId);
+				break;
+			case "CancelSubscription":
+				CancelSubscription.run(apiLoginId, transactionKey, subscriptionId);
+				break;
+			case "UpdateSubscription":
+				UpdateSubscription.run(apiLoginId, transactionKey, subscriptionId);
+				break;
+			case "GetListOfSubscriptions":
+				GetListOfSubscriptions.run(apiLoginId, transactionKey);
+				break;
+			case "GetBatchStatistics":
+				GetBatchStatistics.run(apiLoginId, transactionKey);
+				break;
+			case "GetSettledBatchList":
+				GetSettledBatchList.run(apiLoginId, transactionKey);
+				break;
+			case "GetTransactionList":
+				GetTransactionList.run(apiLoginId, transactionKey);
+				break;
+			case "GetUnsettledTransactionList":
+				GetUnsettledTransactionList.run(apiLoginId, transactionKey);
+				break;
+			case "GetTransactionDetails":
+				GetTransactionDetails.run(apiLoginId, transactionKey, transactionId);
+				break;
+			case "CreateCustomerProfile":
+				CreateCustomerProfile.run(apiLoginId, transactionKey, emailId);
+				break;
+			case "CreateCustomerPaymentProfile":
+				CreateCustomerPaymentProfile.run(apiLoginId, transactionKey, customerProfileId);
+				break;
+			case "CreateCustomerShippingAddress":
+				CreateCustomerShippingAddress.run(apiLoginId, transactionKey, customerProfileId);
+				break;
+			case "DeleteCustomerPaymentProfile":
+				DeleteCustomerPaymentProfile.run(apiLoginId, transactionKey, customerProfileId, customerPaymentProfileId);
+				break;
+			case "DeleteCustomerProfile":
+				DeleteCustomerProfile.run(apiLoginId, transactionKey, customerProfileId);
+				break;
+			case "DeleteCustomerShippingAddress":
+				DeleteCustomerShippingAddress.run(apiLoginId, transactionKey, customerProfileId, customerAddressId);
+				break;
+			case "GetCustomerPaymentProfile":
+				GetCustomerPaymentProfile.run(apiLoginId, transactionKey, customerProfileId, customerPaymentProfileId);
+				break;
+			case "GetCustomerPaymentProfileList":
+				GetCustomerPaymentProfileList.run(apiLoginId, transactionKey);
+				break;
+			case "GetCustomerProfile":
+				GetCustomerProfile.run(apiLoginId, transactionKey, customerProfileId);
+				break;
+			case "GetCustomerProfileIds":
+				GetCustomerProfileIds.run(apiLoginId, transactionKey);
+				break;
+			case "GetCustomerProfileTransactionList":
+				customerProfileId = "1811474252";
+				GetCustomerProfileTransactionList.run(apiLoginId, transactionKey, customerProfileId);
+				break;
+			case "GetCustomerShippingAddress":
+				GetCustomerShippingAddress.run(apiLoginId, transactionKey, customerProfileId, customerAddressId);
+				break;
+			case "GetAcceptCustomerProfilePage":
+				GetAcceptCustomerProfilePage.run(apiLoginId, transactionKey, customerProfileId);
+				break;
+			case "UpdateCustomerProfile":
+				UpdateCustomerProfile.run(apiLoginId, transactionKey, customerProfileId);
+				break;
+			case "UpdateCustomerPaymentProfile":
+				UpdateCustomerPaymentProfile.run(apiLoginId, transactionKey, customerProfileId, customerPaymentProfileId);
+				break;
+			case "UpdateCustomerShippingAddress":
+				UpdateCustomerShippingAddress.run(apiLoginId, transactionKey, customerProfileId, customerAddressId);
+				break;
+			case "ValidateCustomerPaymentProfile":
+				ValidateCustomerPaymentProfile.run(apiLoginId, transactionKey, customerProfileId, customerPaymentProfileId);
+				break;
+			case "PayPalAuthorizeCapture":
+				AuthorizationAndCapture.run(apiLoginId, transactionKey, amount);
+				break;
+			case "PayPalVoid":
+				Void.run(apiLoginId, transactionKey, transactionId);
+				break;
+			case "PayPalAuthorizationOnly":
+				AuthorizationOnly.run(apiLoginId, transactionKey, amount);
+				break;
+			case "PayPalAuthorizeCaptureContinued":
+				AuthorizationAndCaptureContinued.run(apiLoginId, transactionKey, transactionId, payerId, amount);
+				break;
+			case "PayPalAuthorizeOnlyContinued":
+				AuthorizationOnlyContinued.run(apiLoginId, transactionKey, transactionId, payerId, amount);
+				break;
+			case "PayPalCredit":
+				Credit.run(apiLoginId, transactionKey, transactionId);
+				break;
+			case "PayPalGetDetails":
+				GetDetails.run(apiLoginId, transactionKey, transactionId);
+			case "PayPalPriorAuthorizationCapture":
+				PriorAuthorizationCapture.run(apiLoginId, transactionKey, transactionId);
+				break;
+			case "UpdateSplitTenderGroup":
+				UpdateSplitTenderGroup.run(apiLoginId, transactionKey);
+				break;
+			case "GetMerchantDetails":
+				GetMerchantDetails.run(apiLoginId, transactionKey);
+				break;
+			case "GetHeldTransactionList":
+				GetHeldTransactionList.run(apiLoginId, transactionKey);
+				break;
+			case "ApproveOrDeclineHeldTransaction":
+				ApproveOrDeclineHeldTransaction.run(apiLoginId, transactionKey, transactionId);
+				break;
+			case "GetAnAcceptPaymentPage":
+				GetAnAcceptPaymentPage.run(apiLoginId, transactionKey, amount);
+				break;
+			case "CreateChasePayTransaction":
+				CreateChasePayTransaction.run(apiLoginId, transactionKey, amount);
+				break;
+			default:
+				ShowUsage();
+				break;
 		}
 	}
 }

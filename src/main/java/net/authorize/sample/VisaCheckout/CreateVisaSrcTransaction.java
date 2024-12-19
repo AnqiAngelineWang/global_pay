@@ -57,6 +57,9 @@ public class CreateVisaSrcTransaction {
 
     CreateTransactionResponse response = controller.getApiResponse();
 
+		System.out.println(response.getTransactionResponse());
+		System.out.println(response.getProfileResponse());
+
     if (response!=null) {
     	// If API Response is ok, go ahead and check the transaction response
     	if (response.getMessages().getResultCode() == MessageTypeEnum.OK) {
