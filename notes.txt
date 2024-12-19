@@ -1,0 +1,12 @@
+paypal sandbox qr code link: 
+ https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7E530393WK796594R
+
+PayPalAuthorizeCapture
+ChargeCreditCard
+
+
+https://developer.authorize.net/api/reference/features/payment-transactions.html
+
+https://developer.authorize.net/api/reference/index.html#payment-transactions-charge-a-credit-card
+
+https://github.com/khoubyari/spring-boot-rest-example

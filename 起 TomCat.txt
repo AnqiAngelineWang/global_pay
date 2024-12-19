@@ -1,0 +1,22 @@
+
+To deploy a .war file on Apache Tomcat, follow these steps:
+
+Method 1: Using the webapps Directory
+Locate the Tomcat webapps Directory:
+
+Go to the webapps folder inside your Tomcat installation directory (e.g., apache-tomcat-10.x.x/webapps).
+Copy the .war File:
+
+Place your .war file in the webapps directory.
+Start Tomcat:
+
+Navigate to the bin directory and run:
+Windows: startup.bat
+macOS/Linux: ./startup.sh
+Access Your Application:
+
+Open a web browser and go to:
+arduino
+Copy code
+http://localhost:8080/<war-file-name>
+Replace <war-file-name> with the name of your .war file (excluding the .war extension).
